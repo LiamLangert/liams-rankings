@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Liam's Super Cool Rankings{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Ranking:</th>
+    <th>Team:</th>
+    <th>Score:</th>
+    <th>Since Yesterday:</th>
+  </tr>
+  {% for ranking in rankings %}
+  <tr>
+    <td>{{ranking['ID']}}</td>
+    <td>{{ranking['Team']}}</td>
+    <td>{{'%0.3f' | format(ranking['Ranking'] * 100)}}</td>
+    <td>{{ranking['Diff']}}
+  </tr>
+  {% endfor %}
+{% endblock %}
